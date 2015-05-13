@@ -1,0 +1,8 @@
+body {
+  background-image: url("../images/recipe.jpg");
+}
+
+.jumbotron {
+  background: rgb(200, 54, 54); /* This is for ie8 and below */
+   background: rgba(15, 15, 15, .25);
+}
