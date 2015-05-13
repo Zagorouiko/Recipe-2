@@ -1,14 +1,26 @@
-<h3>Add a New Recipe</h3>
-<form action="/recipes" method="post">
-  <label for="name">Enter in the name of the recipe</label>
-  <input id="name" name="name" class='form-control' placeholder="Name of the Recipe" required>
-  <label for='instruction'>Enter in the instructions for the recipe</label>
-  <input id="instruction" name="instruction" class='form-control' placeholder="Instructions" required>
-  <label for="category_id">Select a Category</label>
-  <select id='category_id' name='category_id' type='text'>
-    <% @categories.each() do |category| %>
-    <option value="<%= category.id()%>"> <%= category.description() %> </option>
-    <% end %>
-  </select>
-  <button type="submit">Add Recipe</button>
-</form>
+<% if @categories.any?() %>
+
+  <h3>Add a New Recipe</h3>
+  <form action="/recipes" method="post">
+    <label for="name">Enter in the name of the recipe</label>
+    <input id="name" name="name" class='form-control' placeholder="Name of the Recipe" required>
+    <label for='instruction'>Enter in the instructions for the recipe</label>
+    <input id="instruction" name="instruction" class='form-control' placeholder="Instructions" required>
+
+      <% @categories.each() do |category| %>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="category_ids[]" value="<%= category.id() %>"><%= category.description() %>
+          </label>
+        </div>
+      <% end %>
+
+    <button type="submit">Add Recipe</button>
+  </form>
+
+<% else %>
+
+  <p>There are no categories yet. Please make a category first.</p>
+  <a class='btn btn-default' href='/' role='button'>Back</a>
+
+<% end %>

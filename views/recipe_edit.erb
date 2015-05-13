@@ -1,0 +1,20 @@
+<% if @categories.any? %>
+
+<form action='/recipes' method='post'>
+  <input type='hidden' name='_method' value='patch'>
+  <% @categories.each() do |category| %>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="category_ids[]" value="<%= category.id() %>"><%= category.description() %>
+    </label>
+  </div>
+  <% end %>
+
+  <button type='submit'>Update Recipe</button>
+</form>
+
+<% else %>
+
+  
+
+<% end %>
