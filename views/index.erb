@@ -1,0 +1,25 @@
+<h1>Recipe Box</h1>
+
+
+<% if @categories.any? %>
+  <h2>Categories</h2>
+  <ul>
+    <% @categories.each() do |category| %>
+      <li><a href="/category/<%= category.id %>/recipes"><%= category.description %></a></li>
+    <% end %>
+  </ul>
+
+<% else %>
+  <p>You have not created any categories yet. Please create one! </p>
+
+<% end %>
+
+
+<h3>Create a category</h3>
+<form action="/" method="post">
+  <input id="description" name="description" placeholder="Category Description" required>
+
+  <button type="submit">Add Category</button>
+</form>
+
+<a class='btn btn-default' href='/recipes/new'>Add a New Recipe</a>
