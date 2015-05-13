@@ -36,10 +36,8 @@ end
 #--------------------one recipe page
 get('/category/:category_id/recipe/:id') do
   @id = params.fetch('id').to_i
-  category_id = params.fetch('category_id').to_i
-  @category = Category.find(category_id)
-  @recipes = @category.recipes()
-  erb(:recipes)
+  @recipe = Recipe.find(@id)
+  erb(:recipe)
 end
 
 #---------------------create a new recipe

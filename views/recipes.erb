@@ -4,7 +4,7 @@
   <h4>Here are your recipes:</h4>
   <ul>
     <% @recipes.each() do |recipe| %>
-    <li><a href='/recipe/<%= recipe.id %>'><%= recipe.name %></a></li>
+    <li><a href='/category/<%= @category.id %>/recipe/<%= recipe.id %>'><%= recipe.name %></a></li>
     <% end %>
   </ul>
 
