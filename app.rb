@@ -51,8 +51,9 @@ end
 post('/recipes') do
   name = params.fetch('name')
   instruction = params.fetch('instruction')
+  rating = params.fetch('rating_dropdown').to_i
   category_ids = params.fetch('category_ids')
-  new_recipe = Recipe.create({:name => name, :instruction => instruction})
+  new_recipe = Recipe.create({:name => name, :instruction => instruction, :rating => rating})
   length = category_ids.length()
   length.times() do |time|
     id = category_ids[time].to_i
@@ -67,9 +68,10 @@ end
 patch('/category/:category_id/recipe/:id') do
   name = params.fetch('name')
   instructions = params.fetch('instructions')
+  rating = params.fetch('rating_dropdown').to_i
   id = params.fetch('id').to_i
   @recipe = Recipe.find(id)
-  @recipe.update({:name => name, :instruction => instructions})
+  @recipe.update({:name => name, :instruction => instructions, :rating => rating})
   category_id = params.fetch('category_id')
   @category = Category.find(category_id)
   erb(:recipe)
