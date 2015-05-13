@@ -2,6 +2,14 @@
 
 <p><%= @recipe.instruction %></p>
 
+<p><form action="/category/<%= @category.id %>/recipe/<%= @recipe.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <input name="name" id="name" placeholder="edited_recipe_name" type="text">
+    <input name="instructions" id="instructions" placeholder="edit recipe" type="text">
+    <button type="update_recipe" class="btn-success">Update Recipe</button>
+  </form></p>
+
+
 <form action='/category/<%= @category.id %>/recipe/<%= @recipe.id %>' method='post'>
   <div class='form-group'>
     <input name="_method" type="hidden" value="delete">

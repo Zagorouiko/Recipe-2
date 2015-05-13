@@ -64,11 +64,15 @@ post('/recipes') do
 end
 
 #--------------------update a recipe
-patch('/recipes/:id/edit') do
+patch('/category/:category_id/recipe/:id') do
+  name = params.fetch('name')
+  instructions = params.fetch('instructions')
+  id = params.fetch('id').to_i
+  @recipe = Recipe.find(id)
+  @recipe.update({:name => name, :instruction => instructions})
+  category_id = params.fetch('category_id')
   @category = Category.find(category_id)
-  @category.recipes.push(new_recipe)
-  @recipes = @category.recipes()
-  erb(:recipes)
+  erb(:recipe)
 end
 
 #---------------------delete a recipe
