@@ -2,4 +2,11 @@
 
 <p><%= @recipe.instruction %></p>
 
+<form action='/category/<%= @category.id %>/recipe/<%= @recipe.id %>' method='post'>
+  <div class='form-group'>
+    <input name="_method" type="hidden" value="delete">
+    <button id='delete_recipe' class='btn btn-danger'>Delete Recipe</button>
+  </div>
+</form>
+
 <a href='/'>Home</a>

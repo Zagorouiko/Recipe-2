@@ -35,8 +35,10 @@ end
 
 #--------------------one recipe page
 get('/category/:category_id/recipe/:id') do
-  @id = params.fetch('id').to_i
-  @recipe = Recipe.find(@id)
+  id = params.fetch('id').to_i
+  category_id = params.fetch('category_id').to_i
+  @category = Category.find(category_id)
+  @recipe = Recipe.find(id)
   erb(:recipe)
 end
 
@@ -65,6 +67,17 @@ end
 patch('/recipes/:id/edit') do
   @category = Category.find(category_id)
   @category.recipes.push(new_recipe)
+  @recipes = @category.recipes()
+  erb(:recipes)
+end
+
+#---------------------delete a recipe
+delete('/category/:category_id/recipe/:id') do
+  id = params.fetch('id').to_i
+  recipe = Recipe.find(id)
+  recipe.destroy()
+  category_id = params.fetch('category_id').to_i
+  @category = Category.find(category_id)
   @recipes = @category.recipes()
   erb(:recipes)
 end
