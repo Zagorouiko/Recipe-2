@@ -1,7 +1,7 @@
-<h1>Welcome to the Recipes</h1>
+<h1><%= @category.description %> Recipes</h1>
 
 <% if @recipes.any? %>
-  <h2>Here are you recipes</h2>
+  <h4>Here are your recipes:</h4>
   <ul>
     <% @recipes.each() do |recipe| %>
     <li><a href='/recipe/<%= recipe.id %>'><%= recipe.name %></a></li>
@@ -12,3 +12,12 @@
   <p>You have not created any recipes yet.</p>
 
   <% end %>
+
+  <form action='/category/<%= @category.id %>' method='post'>
+    <div class='form-group'>
+      <input name="_method" type="hidden" value="delete">
+      <button id='delete_category' class='btn btn-danger'>Delete Category</button>
+    </div>
+  </form>
+
+  <a href='/'>Back</a>

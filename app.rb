@@ -1,6 +1,7 @@
 require("bundler/setup")
 Bundler.require(:default)
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
+require('pry')
 
 get('/') do
   @categories = Category.all
@@ -10,6 +11,7 @@ end
 post('/') do
   description = params.fetch('description')
   Category.create({:description => description})
+  @categories = Category.all
   erb(:index)
 end
 
@@ -20,11 +22,19 @@ get('/category/:id/recipes') do
   erb(:recipes)
 end
 
+delete('/category/:id') do
+  id = params.fetch('id').to_i
+  category = Category.find(id)
+  category.destroy()
+  @categories = Category.all
+  erb(:index)
+end
+
 get('/category/:category_id/recipe/:id') do
   @id = params.fetch('id').to_i
   category_id = params.fetch('category_id').to_i
-  category = Category.find(category_id)
-  @recipes = category.recipes()
+  @category = Category.find(category_id)
+  @recipes = @category.recipes()
   erb(:recipes)
 end
 
@@ -37,9 +47,9 @@ post('/recipes') do
   name = params.fetch('name')
   instruction = params.fetch('instruction')
   category_id = params.fetch('category_id').to_i
-  category = Category.find(category_id)
+  @category = Category.find(category_id)
   new_recipe = Recipe.create({:name => name, :instruction => instruction})
-  category.recipes.push(new_recipe)
-  @recipes = category.recipes()
+  @category.recipes.push(new_recipe)
+  @recipes = @category.recipes()
   erb(:recipes)
 end
