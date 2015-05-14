@@ -1,11 +1,13 @@
 <h1><%= @recipe.name %></h1>
+<p>Rating: <%= @recipe.rating %></p>
 
+<p><b>Instructions:</b></p>
 <p><%= @recipe.instruction %></p>
 
 <p><form action="/category/<%= @category.id %>/recipe/<%= @recipe.id %>" method="post">
     <input type="hidden" name="_method" value="patch">
-    <input name="name" id="name" placeholder="edited_recipe_name" type="text">
-    <input name="instructions" id="instructions" placeholder="edit recipe" type="text">
+    <input name="name" id="name" placeholder="edited recipe name" type="text">
+    <input name="instructions" id="instructions" placeholder="edit recipe instruction" type="text">
 
     <label for="rating_dropdown">Edit Rating</label>
     <select id='rating_dropdown' name='rating_dropdown' type='text'>
