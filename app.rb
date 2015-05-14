@@ -12,8 +12,7 @@ end
 post('/') do
   description = params.fetch('description')
   Category.create({:description => description})
-  @categories = Category.all
-  erb(:index)
+  redirect('/')
 end
 
 #----------------category page with recipes
@@ -29,8 +28,7 @@ delete('/category/:id') do
   id = params.fetch('id').to_i
   category = Category.find(id)
   category.destroy()
-  @categories = Category.all
-  erb(:index)
+  redirect('/')
 end
 
 #--------------------one recipe page
@@ -60,8 +58,7 @@ post('/recipes') do
     category = Category.find(id)
     category.recipes.push(new_recipe)
   end
-  @categories = Category.all
-  erb(:index)
+  redirect('/')
 end
 
 #--------------------update a recipe
@@ -86,4 +83,9 @@ delete('/category/:category_id/recipe/:id') do
   @category = Category.find(category_id)
   @recipes = @category.recipes()
   erb(:recipes)
+end
+
+#-----------------------see all recipes
+get('/recipes') do
+  erb(:all_recipes)
 end

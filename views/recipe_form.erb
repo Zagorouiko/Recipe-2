@@ -2,11 +2,11 @@
 
   <h3>Add a New Recipe</h3>
   <form action="/recipes" method="post">
-    <label for="name">Enter in the name of the recipe</label>
+    <label for="name">Enter in the name of the recipe:</label>
     <input id="name" name="name" class='form-control' placeholder="Name of the Recipe" required>
-    <label for='instruction'>Enter in the instructions for the recipe</label>
+    <label for='instruction'>Enter in the instructions for the recipe:</label>
     <input id="instruction" name="instruction" class='form-control' placeholder="Instructions" required>
-    <label for="rating_dropdown">Edit Rating</label>
+    <label for="rating_dropdown">Add a Rating:</label>
     <select id='rating_dropdown' name='rating_dropdown' type='text'>
       <option value="1"> 1 </option>
       <option value="2"> 2 </option>
@@ -14,7 +14,7 @@
       <option value="4"> 4 </option>
       <option value="5"> 5 </option>
     </select>
-
+    <p><b>Select categories this recipe belongs to:</b></p>
       <% @categories.each() do |category| %>
         <div class="checkbox">
           <label>

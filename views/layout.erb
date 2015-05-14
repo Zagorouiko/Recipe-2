@@ -2,19 +2,75 @@
 <html>
 <head>
   <title>Epicurious</title>
-  <link rel='stylesheet' href='css/style.css'>
+  <link rel='stylesheet' href='/css/style.css'>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
 </head>
 <body>
+
   <div class="jumbotron" style="
     padding-left: 75px;
     padding-right: 15px;
     height: 146px;
     margin-bottom: 0px;
+    background: rgb(200, 54, 54);
+    background: rgba(200, 200, 200, .25);
 ">
-<p class = "one">
+
   <h1>Recipe Box</h1>
-</p>
+  </div>
+
+  <nav class="navbar navbar-default" style="
+        background-color: rgba(203, 197, 87, .67);
+">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" <a class='btn btn-default' href='/'>Home</a>
+    </div>
+
+
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <li><a href='/recipes/new'>Add a Recipe</a></li>
+        <li><a href='/recipes'>Recipes</a></li>
+        <!-- <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Used books<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li> -->
+      </ul>
+
+      <form action="/" method="post" class="navbar-form navbar-left" role="search">
+         <div class="form-group">
+           <input id="description" name="description" type="text" placeholder="Create a New Category" required>
+         </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+
+
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
 
   <div class="container">
     <%= yield %>
